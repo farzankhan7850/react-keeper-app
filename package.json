@@ -1,4 +1,5 @@
 {
+  "homepage": "https://farzankhan7850.github.io/react-keeper-app",
   "name": "keeper-app",
   "version": "0.1.0",
   "private": true,
@@ -37,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
