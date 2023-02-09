@@ -1,25 +1,26 @@
 * {
-    font-family: 'McLaren', cursive;
+  font-family: "McLaren", cursive;
 }
 
 .navbar {
-    background-color: rgb(82, 32, 129);
+  background-color: rgb(82, 32, 129);
 }
 
 #footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;
-    color: rgb(223, 214, 214);
+  position: relative;
+  /* float: inline-end; */
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  color: rgb(223, 214, 214);
 }
 
-#box{
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 20px;
+#box {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 20px;
 }
-body{
-background-color: #00238c;
-background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+body {
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
 }

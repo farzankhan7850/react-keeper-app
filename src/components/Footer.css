@@ -1,0 +1,16 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  margin-left: 46%;
+  text-align: center;
+  /* margin-top: auto 0; */
+  color: rgb(161, 157, 157);
+}
+
+@media screen and (max-width: 550px) {
+  footer {
+    margin-left: 30%;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
+import "./CreateArea.css";
 
 function CreateArea(props) {
   const [expand, setExpand] = useState(false);
@@ -38,10 +39,11 @@ function CreateArea(props) {
   }
 
   return (
-    <div>
-      <form className="create-note">
+    <div className="container">
+      <form className="create-note row ">
         {expand && (
           <input
+            className="col-12"
             onChange={handleInput}
             name="title"
             placeholder="Title"
@@ -50,6 +52,7 @@ function CreateArea(props) {
         )}
 
         <textarea
+          className="col-12"
           onClick={isExpanded}
           onChange={handleInput}
           name="content"
@@ -58,7 +61,7 @@ function CreateArea(props) {
           value={input.content}
         />
         <Zoom in={expand}>
-          <Fab onClick={submitNote}>
+          <Fab className="button" onClick={submitNote}>
             <AddIcon sx={{ fontSize: 35 }} />
           </Fab>
         </Zoom>
