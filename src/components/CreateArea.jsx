@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import Zoom from "@mui/material/Zoom";
@@ -7,14 +7,10 @@ import "./CreateArea.css";
 function CreateArea(props) {
   const [expand, setExpand] = useState(false);
 
-  const [input, setInput] = useState({
-    title: "",
-    content: "",
-  });
-
   function handleInput(event) {
     const { name, value } = event.target;
-    setInput((prevValue) => {
+
+    props.setInput((prevValue) => {
       return {
         ...prevValue,
         [name]: value,
@@ -23,15 +19,44 @@ function CreateArea(props) {
   }
 
   function submitNote(event) {
-    (input.title !== "" || input.content !== "") &&
-      input.title !== " " &&
-      input.content !== " " &&
-      props.AddItem(input);
-    setInput({
-      title: "",
-      content: "",
-    });
     event.preventDefault();
+
+    if (props.input.title.trim() !== "" || props.input.content.trim() !== "") {
+      props.setEditNote(() => {
+        return {
+          title: "",
+          content: "",
+        };
+      });
+
+      if (props.isEditing) {
+        props.setNotes(
+          props.notes.map((e, index) => {
+            if (index === props.editID) {
+              const { title, content } = { e };
+              return {
+                title: props.input.title,
+                content: props.input.content,
+              };
+            }
+            return e;
+          })
+        );
+
+        props.setInput({
+          title: "",
+          content: "",
+        });
+        props.setIsEditing(false);
+        props.setEditID(null);
+      } else {
+        props.AddItem(props.input);
+        props.setInput({
+          title: "",
+          content: "",
+        });
+      }
+    }
   }
 
   function isExpanded() {
@@ -47,7 +72,7 @@ function CreateArea(props) {
             onChange={handleInput}
             name="title"
             placeholder="Title"
-            value={input.title}
+            value={props.input.title}
           />
         )}
 
@@ -58,7 +83,7 @@ function CreateArea(props) {
           name="content"
           placeholder="Take a note..."
           rows={expand ? "3" : "1"}
-          value={input.content}
+          value={props.input.content}
         />
         <Zoom in={expand}>
           <Fab className="button" onClick={submitNote}>

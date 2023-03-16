@@ -8,14 +8,21 @@ function Note(props) {
   }
 
   return (
-    <div class="col-sm-4 col-lg-3 ">
-      <div class="card shadow-sm m-1">
-        <div class="card-body">
-          <h5 class="card-title fw-bold">{props.title}</h5>
-          <p class="card-text">{props.content}</p>
+    <div className="col-sm-4 col-lg-3 ">
+      <div className="card shadow-sm m-1">
+        <div className="card-body">
+          <h5
+            className="card-title fw-bold"
+            onClick={() => props.handleEdit(props.id)}
+          >
+            {props.title}
+          </h5>
+          <p className="card-text" onClick={() => props.handleEdit(props.id)}>
+            {props.content}
+          </p>
         </div>
         <button className="btn" onClick={handleClick}>
-          <DeleteRoundedIcon className="delete-btn" sx={{ fontSize: 40 }} />
+          <DeleteRoundedIcon className="delete-btn" sx={{ fontSize: 35 }} />
         </button>
       </div>
     </div>
@@ -23,12 +30,3 @@ function Note(props) {
 }
 
 export default Note;
-{
-  /* <div className="note">
-  <h1>{props.title}</h1>
-  <p>{props.content}</p>
-  <button style={{ backgroundColor: "white" }} onClick={handleClick}>
-    <DeleteRoundedIcon sx={{ fontSize: 40 }} />
-  </button>
-</div>; */
-}
